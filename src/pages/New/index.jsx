@@ -4,6 +4,7 @@ import { Header } from '../../components/Header';
 import { Section } from '../../components/Section';
 import { FoodItem } from '../../components/FoodItem';
 import { Textarea } from '../../components/Textarea';
+import { Footer } from '../../components/Footer';
 
 export function New() {
   return (
@@ -18,6 +19,8 @@ export function New() {
       <Section title="Descrição">
         <Textarea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
       </Section>
+
+      <Footer />
     </Container>
   );
 }
