@@ -6,11 +6,10 @@ export const Container = styled.div`
 
   background-color: ${({ theme, isNew }) =>
     isNew ? "transparent" : theme.COLORS.GRAY_400};
-  border: ${({ theme, isNew }) =>
+  outline: ${({ theme, isNew }) =>
     isNew ? `1px dashed ${theme.COLORS.GRAY_300}` : "none"};
   
-  margin-bottom: 8px;
-  margin-right: 16px;
+  margin-right: 8px;
   border-radius: 8px;
   padding-right: 16px;
   
