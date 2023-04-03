@@ -6,4 +6,13 @@ export const Container = styled.div`
   gap: 14px;
 
   color: ${({ theme }) => theme.COLORS.GRAY_200};
+
+  svg {
+    cursor: pointer;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
 `;
