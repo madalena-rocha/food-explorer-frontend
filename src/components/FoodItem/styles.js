@@ -9,7 +9,6 @@ export const Container = styled.div`
   outline: ${({ theme, isNew }) =>
     isNew ? `1px dashed ${theme.COLORS.GRAY_300}` : "none"};
   
-  margin-right: 8px;
   border-radius: 8px;
   padding-right: 16px;
   

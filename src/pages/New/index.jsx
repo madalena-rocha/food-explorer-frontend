@@ -1,9 +1,13 @@
+import { useState } from 'react';
+import { useMediaQuery } from "react-responsive";
+
 import { RxCaretLeft } from "react-icons/rx";
 import { FiUpload } from "react-icons/fi";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 import { Container, Form, Image, Category } from "./styles";
 
+import { Menu } from "../../components/Menu";
 import { Header } from '../../components/Header';
 import { ButtonText } from "../../components/ButtonText";
 import { Section } from '../../components/Section';
@@ -13,10 +17,17 @@ import { Textarea } from '../../components/Textarea';
 import { Button } from "../../components/Button";
 import { Footer } from '../../components/Footer';
 
-export function New({ isNew }) {
+export function New({ isNew, isAdmin }) {
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <Container>
-      <Header isAdmin />
+      {!isDesktop && 
+        <Menu isAdmin={isAdmin} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      }
+
+      <Header isAdmin={isAdmin} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
       <main>
         <Form>
@@ -26,17 +37,14 @@ export function New({ isNew }) {
               voltar
             </ButtonText>
 
-            {isNew ? 
-              <h1>Adicionar prato</h1> : 
-              <h1>Editar prato</h1>
-            }
+            <h1>{isNew ? "Adicionar prato" : "Editar prato"}</h1>
           </header>
 
           <div>
             <Section title="Imagem do prato">
               <Image className="image">
                 <label htmlFor="image">
-                  <FiUpload />
+                  <FiUpload size={24} />
                   <span>Selecione imagem</span>
 
                   <input 
@@ -49,7 +57,7 @@ export function New({ isNew }) {
 
             <Section title="Nome">
               <Input className="name"
-                placeholder="Ex.: Salada Ceasar" 
+                placeholder={isNew ? "Ex.: Salada Ceasar" : "Salada Ceasar"}
                 type="text"
               />
             </Section>
@@ -63,7 +71,7 @@ export function New({ isNew }) {
                     <option value="beverage">Bebida</option>
                   </select>
 
-                  <RiArrowDownSLine />
+                  <RiArrowDownSLine size={24} />
                 </label>
               </Category>
             </Section>
@@ -86,20 +94,15 @@ export function New({ isNew }) {
           </div>
 
           <Section title="Descrição">
-            {isNew ? 
-              <Textarea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" /> : 
-              <Textarea placeholder="A Salada César é uma opção refrescante para o verão." />
-            }
+            <Textarea placeholder={isNew ? 
+              "Fale brevemente sobre o prato, seus ingredientes e composição" : 
+              "A Salada César é uma opção refrescante para o verão."} 
+            />
           </Section>
 
           <div className="buttons">
-            {isNew ? 
-              <Button title="Salvar alterações" className="save" disabled /> : 
-              <>
-                <Button title="Excluir prato" className="delete" />
-                <Button title="Salvar alterações" className="save" disabled />
-              </>
-            }
+            {!isNew && <Button title="Excluir prato" className="delete" />}
+            <Button title="Salvar alterações" className="save" disabled />
           </div>
         </Form>
       </main>
