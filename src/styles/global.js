@@ -6,7 +6,12 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-  
+
+  :root {
+    --swiper-navigation-size: 40px;
+    --swiper-theme-color: ${({ theme }) => theme.COLORS.WHITE};
+  }
+
   body {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     color: ${({ theme }) => theme.COLORS.WHITE};

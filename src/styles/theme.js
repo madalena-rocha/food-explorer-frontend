@@ -8,6 +8,10 @@ export default {
     BACKGROUND_400: "#192227",
     BACKGROUND_300: "#00111A",
     BACKGROUND_200: "#000204",
+    
+    GRADIENT_100: "#091E26",
+    GRADIENT_200: "#00131C",
+    GRADIENT_800: "rgba(0, 10, 15, 0.272541)",
 
     WHITE: "#FFFFFF",
     LIGHT_WHITE: "#FFFAF1",
