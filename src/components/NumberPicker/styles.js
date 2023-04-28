@@ -7,12 +7,24 @@ export const Container = styled.div`
 
   color: ${({ theme }) => theme.COLORS.GRAY_200};
 
-  svg {
-    cursor: pointer;
+  button {
+    border: none;
+    background: none;
+
+    color: ${({ theme }) => theme.COLORS.GRAY_200};
     transition: filter 0.2s;
 
     &:hover {
       filter: brightness(0.9);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    svg,
+    span {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 160%;
     }
   }
 `;
