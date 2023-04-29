@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
 
   display: grid;
-  grid-template-rows: 114px auto 77px;
+  grid-template-rows: 11.4rem auto 7.7rem;
   grid-template-areas:
     "header"
     "content"
@@ -18,12 +18,12 @@ export const Container = styled.div`
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 1.6rem;
 
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
     
-    padding: 8px;
-    border-radius: 8px;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
     
     &:focus-within {
       outline: 1px solid ${({ theme }) => theme.COLORS.WHITE};
@@ -44,14 +44,14 @@ export const Container = styled.div`
   .buttons {
     display: flex;
     flex-direction: row;
-    gap: 32px;
-    
+    gap: 3.2rem;
+
     > button {
-      padding: 12px 24px;
+      padding: 1.2rem 2.4rem;
     }
 
     .delete {
-      max-width: 160px;
+      max-width: 16rem;
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
     }
 
@@ -65,19 +65,19 @@ export const Container = styled.div`
   
   @media (min-width: 1024px) {
     height: 100vh;
-    grid-template-rows: 96px auto 77px;
+    grid-template-rows: 9.6rem auto 7.7rem;
 
     > main {
       width: 100%;
       overflow-y: auto;
 
       ::-webkit-scrollbar {
-        width: 8px;
+        width: 0.8rem;
       }
 
       ::-webkit-scrollbar-thumb {
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
-        border-radius: 8px;
+        border-radius: 0.8rem;
       }
     }
 
@@ -85,11 +85,11 @@ export const Container = styled.div`
       justify-content: flex-end;
 
       .delete {
-        max-width: 135px;
+        max-width: 13.5rem;
       }
 
       .save {
-        max-width: 172px;
+        max-width: 17.2rem;
       }
     }
   }
@@ -98,18 +98,18 @@ export const Container = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2.4rem;
 
-  max-width: 364px;
-  margin: 10.92px auto 53.08px;
-  margin-inline: max(32px, calc((100% - 364px) / 2));
+  max-width: 36.4rem;
+  margin: 1.1rem auto 5.3rem;
+  margin-inline: max(3.2rem, calc((100% - 36.4rem) / 2));
 
   > header {
     display: flex;
     flex-direction: column;
 
     h1 {
-      margin-top: 24px;
+      margin-top: 2.4rem;
 
       font-family: "Poppins", sans-serif;
       font-weight: 500;
@@ -122,7 +122,7 @@ export const Form = styled.form`
   > div {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 2.4rem;
 
     section {
       width: 100%;
@@ -130,42 +130,42 @@ export const Form = styled.form`
 
     section input {
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
-      border-radius: 8px;
+      border-radius: 0.8rem;
     }
   }
 
   @media (min-width: 1024px) {
-    gap: 32px;
+    gap: 3.2rem;
 
-    max-width: 1120px;
-    margin: 40px auto 116px;
-    margin-inline: max(124px, calc((100% - 1120px) / 2));
+    max-width: 112rem;
+    margin: 4rem auto 11.6rem;
+    margin-inline: max(12.4rem, calc((100% - 112rem) / 2));
 
     > div {
       flex-direction: row;
-      gap: 32px;
+      gap: 3.2rem;
 
       :first-of-type {
         section:nth-of-type(1) {
-          max-width: 229px;
+          max-width: 22.9rem;
         }
         
         section:nth-of-type(2) {
-          max-width: 463px;
+          max-width: 46.3rem;
         }
 
         section:nth-of-type(3) {
-          max-width: 364px;
+          max-width: 36.4rem;
         }
       }
 
       :nth-of-type(2) {
         section:nth-of-type(1) {
-          max-width: 837px;
+          max-width: 83.7rem;
         }
         
         section:nth-of-type(2) {
-          max-width: 251px;
+          max-width: 25.1rem;
         }
       }
     }
@@ -173,8 +173,8 @@ export const Form = styled.form`
 `;
 
 export const Image = styled.div`
-  padding: 12px 32px;
-  border-radius: 8px;
+  padding: 1.2rem 3.2rem;
+  border-radius: 0.8rem;
   position: relative;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
@@ -186,13 +186,13 @@ export const Image = styled.div`
 
   > label {
     display: flex;
-    gap: 8px;
+    gap: 0.8rem;
     cursor: pointer;
 
     span {
       font-family: "Poppins", sans-serif;
-      font-size: 14px;
-      line-height: 24px;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
     }
 
     input {
@@ -216,7 +216,7 @@ export const Image = styled.div`
 
   @media (min-width: 1024px) {
     input {
-      max-width: 229px;
+      max-width: 22.9rem;
     }
   }
 `;
@@ -231,14 +231,14 @@ export const Category = styled.div`
       cursor: pointer;
       
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 8px;
+      padding: 1.2rem 1.6rem;
+      border-radius: 0.8rem;
       
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
       color: ${({ theme }) => theme.COLORS.GRAY_100};
     
       font-weight: 400;
-      font-size: 14px;
+      font-size: 1.4rem;
       line-height: 160%;
     }
     
@@ -247,7 +247,7 @@ export const Category = styled.div`
 
       position: absolute;
       top: 0;
-      right: 16px;
+      right: 1.6rem;
 
       cursor: pointer;
       pointer-events: none;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 1.4rem;
 
   color: ${({ theme }) => theme.COLORS.GRAY_200};
 
@@ -23,7 +23,7 @@ export const Container = styled.div`
     svg,
     span {
       font-weight: 700;
-      font-size: 20px;
+      font-size: 2rem;
       line-height: 160%;
     }
   }

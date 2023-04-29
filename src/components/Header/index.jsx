@@ -23,7 +23,7 @@ export function Header({ isAdmin, isMenuOpen, setIsMenuOpen }) {
           {!isMenuOpen ?
             <FiMenu className="fi-menu-icon" onClick={() => setIsMenuOpen(true)} /> :
             <>
-              <MdClose size={18} onClick={() => setIsMenuOpen(false)} />
+              <MdClose size={"1.8rem"} onClick={() => setIsMenuOpen(false)} />
               <span>Menu</span>
             </>
           }
@@ -45,7 +45,7 @@ export function Header({ isAdmin, isMenuOpen, setIsMenuOpen }) {
 
           {isDesktop &&
             <Logout>
-              <FiLogOut size={32} />
+              <FiLogOut size={"3.2rem"} />
             </Logout>
           }
         </>

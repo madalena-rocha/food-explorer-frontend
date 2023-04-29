@@ -8,7 +8,9 @@ export default createGlobalStyle`
   }
 
   :root {
-    --swiper-navigation-size: 40px;
+    font-size: 62.5%;
+
+    --swiper-navigation-size: 4rem;
     --swiper-theme-color: ${({ theme }) => theme.COLORS.WHITE};
   }
 
@@ -20,8 +22,7 @@ export default createGlobalStyle`
 
   body, input, button, textarea {
 	  font-family: 'Roboto', sans-serif;
-	  font-size: 16px;
-	  outline: none;
+	  font-size: 1.6rem;
   }
 
   a {

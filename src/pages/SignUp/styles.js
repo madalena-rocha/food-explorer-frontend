@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
-  margin-inline: 65px 47px;
+  margin-inline: 6.5rem 4.7rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 73px;
+  gap: 7.3rem;
 
   @media (min-width: 1024px) {
-    margin-inline: 154px 108px;
+    margin-inline: 15.4rem 10.8rem;
 
     flex-direction: row;
     justify-content: space-between;
@@ -23,40 +23,38 @@ export const Brand = styled.div`
   display: flex;
   margin-inline: auto;
 
-  > svg {
-    width: 278.05px;
-    height: 44px;
+  > img {
+    width: 27.8rem;
   }
 
   @media (min-width: 1024px) {
     margin-inline: 0;
 
-    > svg {
-      width: 324px;
-      height: 48px;
+    > img {
+      width: 32.4rem;
     }
   }
 `;
 
 export const Form = styled.form`
   width: 100%;
-  max-width: 316px;
+  max-width: 31.6rem;
 
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 3.2rem;
 
   > h2 {
     display: none;
   }
 
   > section h2 {
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
   }
 
   > section input {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
-    border-radius: 8px;
+    border-radius: 0.8rem;
   }
 
   > a {
@@ -64,14 +62,14 @@ export const Form = styled.form`
     text-align: center;
 
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
   }
   
   @media (min-width: 1024px) {
-    min-width: 476px;
-    padding: 64px;
-    border-radius: 16px;
+    min-width: 47.6rem;
+    padding: 6.4rem;
+    border-radius: 1.6rem;
 
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
 
@@ -80,7 +78,7 @@ export const Form = styled.form`
 
       font-family: "Poppins", sans-serif;
       font-weight: 500;
-      font-size: 32px;
+      font-size: 3.2rem;
       line-height: 140%;
       text-align: center;
     }

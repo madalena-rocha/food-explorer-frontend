@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
 
   display: grid;
-  grid-template-rows: 114px auto 77px;
+  grid-template-rows: 11.4rem auto 7.7rem;
   grid-template-areas:
     "header"
     "content"
@@ -15,18 +15,18 @@ export const Container = styled.div`
     justify-self: center;
 
     > div {
-      max-width: 316px;
-      margin: 31.85px auto 49.43px;
-      margin-inline: max(56px, calc((100% - 316px) / 2));
+      max-width: 31.6rem;
+      margin: 3.2rem auto 4.9rem;
+      margin-inline: max(5.6rem, calc((100% - 31.6rem) / 2));
     }
   }
 
   .buttons {
     display: flex;
     justify-content: center;
-    gap: 16px;
-    margin-top: 24px;
-    
+    gap: 1.6rem;
+    margin-top: 2.4rem;
+
     div svg, 
     div span {
       font-weight: 700;
@@ -36,63 +36,63 @@ export const Container = styled.div`
   }
 
   .edit {
-    padding: 12px 24px;
+    padding: 1.2rem 2.4rem;
   }
 
   .include {
-    max-width: 188px;
-    gap: 5.41px;
-    border-radius: 3.38px;
-    padding: 8.11px 43.98px;
+    max-width: 18.8rem;
+    gap: 0.5rem;
+    border-radius: 0.3rem;
+    padding: 0.8rem;
 
-    font-size: 9.46px;
-    line-height: 16px;
+    font-size: 0.9rem;
+    line-height: 1.6rem;
 
     svg {
-      width: 21.63px;
-      height: 21.63px;
+      width: 2.2rem; 
+      height: auto;
     }
   }
 
   @media (min-width: 1024px) {
     height: 100vh;
-    grid-template-rows: 96px auto 77px;
+    grid-template-rows: 9.6rem auto 7.7rem;
 
     > main {
       width: 100%;
       overflow-y: auto;
 
       ::-webkit-scrollbar {
-        width: 8px;
+        width: 0.8rem;
       }
 
       ::-webkit-scrollbar-thumb {
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
-        border-radius: 8px;
+        border-radius: 0.8rem;
       }
 
       > div {
-        max-width: 1124px;
-        margin: 32px auto 155px;
-        margin-inline: max(122px, calc((100% - 1124px) / 2));
+        max-width: 112.4rem;
+        margin: 3.2rem auto 15.5rem;
+        margin-inline: max(12.2rem, calc((100% - 112.4rem) / 2));
       } 
     }
 
     .buttons {
       justify-content: initial;
-      gap: 33px;
+      gap: 3.3rem;
     }
 
     .edit {
-      max-width: 131px;
+      max-width: 13.1rem;
     }
 
     .include {
-      max-width: 162px;
-      padding: 12px 24px;
+      max-width: 16.2rem;
+      padding: 1.2rem 2.4rem;
 
-      font-size: 14px;
-      line-height: 24px;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
     }
   }
 `;
@@ -101,26 +101,25 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 1.6rem;
+  margin-top: 1.6rem;
 
   > img {
     width: 100%;
-    max-width: 264px;
-    height: auto;
+    max-width: 26.4rem;
   }
 
   > div {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 2.4rem;
 
     text-align: center;
 
     h1 {
       font-family: "Poppins", sans-serif;
       font-weight: 500;
-      font-size: 27.04px;
+      font-size: 2.7rem;
       line-height: 140%;
 
       color: ${({ theme }) => theme.COLORS.GRAY_200};
@@ -128,7 +127,6 @@ export const Content = styled.div`
 
     p {
       font-family: "Poppins", sans-serif;
-      font-size: 16.22px;
       line-height: 140%;
 
       color: ${({ theme }) => theme.COLORS.GRAY_200};
@@ -138,33 +136,33 @@ export const Content = styled.div`
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 2.4rem;
     }
   }
 
   @media (min-width: 1024px) {
     flex-direction: row;
-    gap: 47px;
-    margin-top: 42px;
+    gap: 4.7rem;
+    margin-top: 4.2rem;
 
     > img {
-      max-width: 390px;
+      max-width: 39rem;
     }
 
     > div {
       text-align: left;
 
       h1 {
-        font-size: 40px;
+        font-size: 4rem;
       }
 
       p {
-        font-size: 24px;
+        font-size: 2.4rem;
       }
 
       section {
         justify-content: initial;
-        gap: 12px;
+        gap: 1.2rem;
       }
     }
   }

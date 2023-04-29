@@ -12,7 +12,7 @@ export function Button({ title, loading = false, isCustomer, ...rest }) {
       disabled={loading} 
       {...rest}
     >
-      {isCustomer && <TbReceipt size={32} />}
+      {isCustomer && <TbReceipt size={"3.2rem"} />}
       {loading ? "Carregando..." : title}
       {isCustomer && <span>{isDesktop ? `(${rest.orderCount})` : rest.orderCount}</span>}
     </Container>

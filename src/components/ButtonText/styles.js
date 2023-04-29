@@ -6,7 +6,7 @@ export const Container = styled.button`
 
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 2.4rem;
   line-height: 140%;
 
   color: ${({ theme }) => theme.COLORS.GRAY_200};
@@ -15,9 +15,7 @@ export const Container = styled.button`
   align-items: center;
 
   > svg {
-    width: 32px;
-    height: 32px;
-
+    font-size: 3.2rem;
     color: ${({ theme }) => theme.COLORS.WHITE};
   }
   

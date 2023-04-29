@@ -9,8 +9,8 @@ export const Container = styled.div`
   outline: ${({ theme, isNew }) =>
     isNew ? `1px dashed ${theme.COLORS.GRAY_300}` : "none"};
   
-  border-radius: 8px;
-  padding-right: 16px;
+  border-radius: 0.8rem;
+  padding-right: 1.6rem;
   
   > button {
     border: none;
@@ -24,10 +24,10 @@ export const Container = styled.div`
   }
   
   > input {
-    height: 32px;
+    height: 3.2rem;
     width: 100%;
     
-    padding: 8px 8px 8px 16px;
+    padding: 0.8rem 0.8rem 0.8rem 1.6rem;
     border: none;
     
     color: ${({ theme }) => theme.COLORS.WHITE};
