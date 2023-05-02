@@ -15,9 +15,8 @@ export const Container = styled.div`
     justify-self: center;
 
     > div {
-      max-width: 31.6rem;
-      margin: 3.2rem auto 4.9rem;
-      margin-inline: max(5.6rem, calc((100% - 31.6rem) / 2));
+      width: calc(100% - 11.2rem);
+      margin: 3.2rem 5.6rem 4.9rem;
     }
   }
 
@@ -26,13 +25,6 @@ export const Container = styled.div`
     justify-content: center;
     gap: 1.6rem;
     margin-top: 2.4rem;
-
-    div svg, 
-    div span {
-      font-weight: 700;
-      font-size: 22.63px;
-      line-height: 160%;
-    }
   }
 
   .edit {
@@ -54,6 +46,17 @@ export const Container = styled.div`
     }
   }
 
+  @media (min-width: 375px) {
+    .buttons {
+      div svg, 
+      div span {
+        font-weight: 700;
+        font-size: 2.3rem;
+        line-height: 160%;
+      }
+    }
+  }
+
   @media (min-width: 1024px) {
     height: 100vh;
     grid-template-rows: 9.6rem auto 7.7rem;
@@ -72,9 +75,8 @@ export const Container = styled.div`
       }
 
       > div {
-        max-width: 112.4rem;
-        margin: 3.2rem auto 15.5rem;
-        margin-inline: max(12.2rem, calc((100% - 112.4rem) / 2));
+        width: calc(100% - 24.4rem);
+        margin: 3.2rem 12.2rem 15.5rem;
       } 
     }
 

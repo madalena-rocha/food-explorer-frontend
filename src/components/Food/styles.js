@@ -98,8 +98,16 @@ export const Order = styled.div`
   align-items: center;
   gap: 1.6rem;
 
+  > button {
+    padding: 0.4rem 2.4rem;
+  }
+
   @media (min-width: 1024px) {
     width: fit-content;
     flex-direction: row;
+
+    > button {
+      padding: 1.2rem 2.4rem;
+    }
   }
 `;

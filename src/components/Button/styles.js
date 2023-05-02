@@ -10,6 +10,8 @@ export const Container = styled.button`
   justify-content: center;
   
   width: 100%;
+  padding: 1.2rem 2.4rem;
+  
   background-color: ${({ theme }) => theme.COLORS.DARK_RED};
   color: ${({ theme }) => theme.COLORS.WHITE};
 

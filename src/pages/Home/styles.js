@@ -17,12 +17,10 @@ export const Container = styled.div`
     width: 100vw;
 
     > div {
-      max-width: 40.4rem;
-      margin: 4.4rem auto 2.5rem;
-      margin-left: max(2.4rem, calc(100% - 40.4rem));
+      width: calc(100% - 2.4rem);
+      margin: 4.4rem 0 2.5rem 2.4rem;
     
       header {
-        max-width: 37.6rem;
         height: 12rem;
         margin-inline: 1.2rem 1.6rem;
 
@@ -73,17 +71,6 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
-    > main > div {
-      max-width: 72rem;
-      margin-inline: max(2.4rem, calc((100% - 72rem) / 2));
-    }
-
-    > main > div header {
-      max-width: 71.8rem;
-    }
-  }
-
   @media (min-width: 1024px) {
     height: 100vh;
     grid-template-rows: 9.6rem auto 7.7rem;
@@ -101,12 +88,10 @@ export const Container = styled.div`
       }
 
       > div {
-        max-width: 112.2rem;
-        margin: 17.2rem auto 4.8rem;
-        margin-inline: max(12.3rem, calc((100% - 112.2rem) / 2));
+        width: calc(100% - 24.6rem);
+        margin: 17.2rem 12.3rem 4.8rem;
 
         header {
-          max-width: 112rem;
           height: 26rem;
           margin-inline: 0.1rem;
 

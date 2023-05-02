@@ -9,6 +9,7 @@ export const Container = styled.footer`
 
   display: flex;
   justify-content: space-between;
+  gap: 0.8rem;
   
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_300};
 

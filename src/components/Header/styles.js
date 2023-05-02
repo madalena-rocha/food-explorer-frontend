@@ -12,6 +12,7 @@ export const Container = styled.header`
   
   button:last-child {
     width: auto;
+    padding: 0;
     background: none;
   }
   
