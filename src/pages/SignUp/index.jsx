@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import { api } from "../../services/api";
 
 import { Container, Form, Brand } from "./styles";
 
@@ -9,6 +12,32 @@ import { Button } from "../../components/Button";
 import brand from "../../assets/brand.svg";
 
 export function SignUp() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  function handleSignUp() {
+    if (!name || !email || !password) {
+      return alert("Preencha todos os campos!");
+    }
+
+    api
+      .post("/users", { name, email, password })
+      .then(() => {
+        alert("Usuário cadastrado com sucesso!");
+        navigate(-1);
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else {
+          alert("Não foi possível cadastrar.");
+        }
+      });
+  }
+
   return (
     <Container>
       <Brand>
@@ -22,6 +51,7 @@ export function SignUp() {
           <Input 
             placeholder="Exemplo: Maria da Silva" 
             type="text"
+            onChange={e => setName(e.target.value)}
           />
         </Section>
 
@@ -29,6 +59,7 @@ export function SignUp() {
           <Input 
             placeholder="Exemplo: exemplo@exemplo.com.br" 
             type="text"
+            onChange={e => setEmail(e.target.value)}
           />
         </Section>
 
@@ -36,10 +67,11 @@ export function SignUp() {
           <Input 
             placeholder="No mínimo 6 caracteres" 
             type="password"
+            onChange={e => setPassword(e.target.value)}
           />
         </Section>
 
-        <Button title="Criar conta" />
+        <Button title="Criar conta" onClick={handleSignUp} />
 
         <Link to="/">
           Já tenho uma conta
