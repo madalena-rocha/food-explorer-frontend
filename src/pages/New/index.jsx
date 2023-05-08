@@ -21,6 +21,18 @@ export function New({ isNew, isAdmin }) {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState("");
+
+  function handleAddTag() {
+    setTags((prevState) => [...prevState, newTag]);
+    setNewTag("");
+  }
+
+  function handleRemoveTag(deleted) {
+    setTags((prevState) => prevState.filter((tag) => tag !== deleted));
+  }
+
   return (
     <Container>
       {!isDesktop && 
@@ -80,8 +92,23 @@ export function New({ isNew, isAdmin }) {
           <div>
             <Section title="Ingredientes">
               <div className="tags">
-                <FoodItem value="Pão Naan" />
-                <FoodItem isNew placeholder="Adicionar" />
+                {
+                  tags.map((tag, index) => (
+                    <FoodItem
+                      key={String(index)}
+                      value={tag}
+                      onClick={() => handleRemoveTag(tag)}
+                    />
+                  ))
+                }
+
+                <FoodItem
+                  isNew
+                  placeholder="Adicionar"
+                  onChange={(e) => setNewTag(e.target.value)}
+                  value={newTag}
+                  onClick={handleAddTag}
+                />
               </div>
             </Section>
 
