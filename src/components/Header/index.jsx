@@ -2,7 +2,9 @@ import { FiMenu, FiLogOut } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 import { useMediaQuery } from "react-responsive";
 
+import { useNavigate } from 'react-router-dom';
 import { Container, Menu, Brand, Logout } from "./styles";
+import { useAuth } from '../../hooks/auth';
 
 import { Search } from "../../components/Search";
 import { Button } from "../../components/Button";
@@ -13,8 +15,15 @@ import brandMobile from "../../assets/brand-mobile.svg";
 
 export function Header({ isAdmin, isMenuOpen, setIsMenuOpen }) {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
-  
   const logo = isAdmin ? (isDesktop ? brandAdmin : brandMobile) : brand;
+  
+  const { signOut } = useAuth();
+  const navigation = useNavigate();
+
+  function handleSignOut() {
+    navigation("/");
+    signOut();
+  }
 
   return (
     <Container>
@@ -44,7 +53,7 @@ export function Header({ isAdmin, isMenuOpen, setIsMenuOpen }) {
           }
 
           {isDesktop &&
-            <Logout>
+            <Logout onClick={handleSignOut}>
               <FiLogOut size={"3.2rem"} />
             </Logout>
           }
