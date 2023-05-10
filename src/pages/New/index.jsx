@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { useMediaQuery } from "react-responsive";
 
+import { useNavigate } from 'react-router-dom';
+
 import { RxCaretLeft } from "react-icons/rx";
 import { FiUpload } from "react-icons/fi";
 import { RiArrowDownSLine } from "react-icons/ri";
+
+import { api } from '../../services/api';
 
 import { Container, Form, Image, Category } from "./styles";
 
@@ -21,8 +25,24 @@ export function New({ isNew, isAdmin }) {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [name, setName] = useState("");
+	const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+
+  const [image, setImage] = useState(null);
+  const [fileName, setFileName] = useState("");
+
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
+
+  const navigate = useNavigate();
+
+  function handleImageChange(e) {
+    const file = e.target.files[0];
+    setImage(file);
+    setFileName(file.name);
+  }
 
   function handleAddTag() {
     setTags((prevState) => [...prevState, newTag]);
@@ -32,6 +52,59 @@ export function New({ isNew, isAdmin }) {
   function handleRemoveTag(deleted) {
     setTags((prevState) => prevState.filter((tag) => tag !== deleted));
   }
+
+  async function handleNewDish() {
+    if (!image) {
+      return alert("Selecione a imagem do prato.");
+    }
+
+    if (!name) {
+      return alert("Digite o nome do prato.");
+    }
+
+    if (!category) {
+      return alert("Selecione a categoria do prato.");
+    }
+
+    if (tags.length === 0) {
+      return alert("Informe pelo menos um ingrediente do prato.");
+    }
+
+    if (newTag) {
+      return alert(
+        "Você deixou um ingrediente no campo para adicionar, mas não clicou em adicionar. Clique para adicionar ou deixe o campo vazio."
+      );
+    }
+
+    if (!price) {
+      return alert("Digite o preço do prato.");
+    }
+
+    if (!description) {
+      return alert("Digite a descrição do prato.");
+    }
+    
+		const formData = new FormData();
+    formData.append("image", image);
+    formData.append("name", name);
+    formData.append("category", category);
+    formData.append("price", price);
+    formData.append("description", description);
+
+    formData.append("ingredients", JSON.stringify(tags));
+
+    try {
+      await api.post("/dishes", formData);
+      alert("Prato cadastrado com sucesso!");
+      navigate("/");
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Não foi possível cadastrar o prato.");
+      }
+    }
+	}
 
   return (
     <Container>
@@ -57,11 +130,12 @@ export function New({ isNew, isAdmin }) {
               <Image className="image">
                 <label htmlFor="image">
                   <FiUpload size={"2.4rem"} />
-                  <span>Selecione imagem</span>
+                  <span>{fileName || "Selecione imagem"}</span>
 
                   <input 
                     id="image" 
                     type="file"
+                    onChange={handleImageChange}
                   />
                 </label>
               </Image>
@@ -69,15 +143,22 @@ export function New({ isNew, isAdmin }) {
 
             <Section title="Nome">
               <Input className="name"
-                placeholder={isNew ? "Ex.: Salada Ceasar" : "Salada Ceasar"}
+                placeholder="Ex.: Salada Ceasar"
                 type="text"
+                value={name}
+                onChange={e => setName(e.target.value)}
               />
             </Section>
 
             <Section title="Categoria">
               <Category className="category">
                 <label htmlFor="category">
-                  <select id="category">
+                  <select 
+                    id="category" 
+                    value={category}
+                    onChange={e => setCategory(e.target.value)}
+                  >
+                    <option value="">Selecionar</option>
                     <option value="meal">Refeição</option>
                     <option value="dessert">Sobremesa</option>
                     <option value="beverage">Bebida</option>
@@ -116,20 +197,25 @@ export function New({ isNew, isAdmin }) {
               <Input className="price"
                 placeholder="R$ 00,00" 
                 type="number"
+                value={price}
+                onChange={e => setPrice(e.target.value)}
               />
             </Section>
           </div>
 
           <Section title="Descrição">
-            <Textarea placeholder={isNew ? 
-              "Fale brevemente sobre o prato, seus ingredientes e composição" : 
-              "A Salada César é uma opção refrescante para o verão."} 
+            <Textarea 
+              placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+              onChange={(e) => setDescription(e.target.value)}
             />
           </Section>
 
           <div className="buttons">
             {!isNew && <Button title="Excluir prato" className="delete" />}
-            <Button title="Salvar alterações" className="save" disabled />
+            <Button className="save"
+              title="Salvar alterações"
+              onClick={handleNewDish}
+            />
           </div>
         </Form>
       </main>
