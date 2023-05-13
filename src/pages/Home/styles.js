@@ -154,21 +154,32 @@ export const Content = styled.div`
       font-size: 3.2rem;
     }
 
-    swiper-container::before {
+    swiper-container::before,
+    swiper-container::after {
       content: '';
       position: absolute;
-      left: 0;
       top: 0;
       bottom: 0;
-      width: 100%;
+      width: 22.4rem;
+      z-index: 2;
+    }
+
+    swiper-container::before {
+      left: 0;
       background: linear-gradient(
         90deg, 
         rgba(0, 0, 0, 1) 0%,
-        transparent 10%, 
-        transparent 90%, 
+        transparent 100%
+      );
+    }
+
+    swiper-container::after {
+      right: 0;
+      background: linear-gradient(
+        90deg, 
+        transparent 0%,
         rgba(0, 0, 0, 1) 100%
       );
-      z-index: 2;
     }
 
     swiper-slide {

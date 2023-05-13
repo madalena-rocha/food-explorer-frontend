@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from "react-responsive";
 import { Container, Content } from "./styles";
 
@@ -53,6 +54,12 @@ export function Home({ isAdmin }) {
 
   const [dishes, setDishes] = useState({ meals: [], desserts: [], beverages: [] });
   const [search, setSearch] = useState("");
+
+  const navigate = useNavigate();
+
+  function handleDetails(id) {
+    navigate(`/dish/${id}`);
+  }
 
   useEffect(() => {
     async function fetchDishes() {
@@ -120,6 +127,7 @@ export function Home({ isAdmin }) {
                         isChecked
                         isAdmin={isAdmin}
                         data={dish} 
+                        onClick={() => handleDetails(dish.id)}
                       />
                     </swiper-slide>
                   ))
@@ -144,6 +152,7 @@ export function Home({ isAdmin }) {
                         isChecked
                         isAdmin={isAdmin}
                         data={dish} 
+                        onClick={() => handleDetails(dish.id)}
                       />
                     </swiper-slide>
                   ))
@@ -168,6 +177,7 @@ export function Home({ isAdmin }) {
                         isChecked
                         isAdmin={isAdmin}
                         data={dish} 
+                        onClick={() => handleDetails(dish.id)}
                       />
                     </swiper-slide>
                   ))
