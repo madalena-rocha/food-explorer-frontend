@@ -5,6 +5,8 @@ import { RxCaretRight } from "react-icons/rx";
 import { useMediaQuery } from "react-responsive";
 import theme from "../../styles/theme";
 
+import { api } from '../../services/api';
+
 import { Container, Title, Order } from "./styles";
 import { NumberPicker } from '../../components/NumberPicker';
 import { Button } from "../../components/Button";
@@ -20,10 +22,10 @@ export function Food({ data, isAdmin, isChecked, ...rest }) {
         isChecked ? fillFiHeart : <FiHeart size={"2.4rem"} />
       }
 
-      <img src={data.src} alt="Imagem do prato." />
+      <img src={`${api.defaults.baseURL}/files/${data.image}`} alt="Imagem do prato." />
       
       <Title>
-        <h2>{data.title}</h2>
+        <h2>{data.name}</h2>
         <RxCaretRight size={isDesktop ? "2.4rem" : "1.4rem"} />
       </Title>
       
