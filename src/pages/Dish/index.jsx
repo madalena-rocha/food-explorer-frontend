@@ -25,7 +25,11 @@ export function Dish({ isAdmin }) {
   const navigate = useNavigate();
 
   function handleBack() {
-    navigate("/");
+    navigate(-1);
+  }
+
+  function handleEdit() {
+    navigate(`/edit/${params.id}`);
   }
 
   useEffect(() => {
@@ -79,7 +83,11 @@ export function Dish({ isAdmin }) {
 
                 <div className="buttons">
                   {isAdmin ? 
-                    <Button title="Editar prato" className="edit" /> : 
+                    <Button 
+                      title="Editar prato" 
+                      className="edit" 
+                      onClick={handleEdit}
+                    /> : 
                     <>
                       <NumberPicker />
                       <Button 

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMediaQuery } from "react-responsive";
 
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { RxCaretLeft } from "react-icons/rx";
 import { FiUpload } from "react-icons/fi";
@@ -21,30 +21,62 @@ import { Textarea } from '../../components/Textarea';
 import { Button } from "../../components/Button";
 import { Footer } from '../../components/Footer';
 
-export function New({ isAdmin }) {
+export function Edit({ isAdmin }) {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [dish, setDish] = useState(null);
+
   const [name, setName] = useState("");
-	const [description, setDescription] = useState("");
+  const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
 
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("");
+  const [updatedImage, setUpdatedImage] = useState(null);
 
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
 
+  const params = useParams();
   const navigate = useNavigate();
 
   function handleBack() {
     navigate(-1);
   }
 
+  useEffect(() => {
+    async function fetchDish() {
+      try {
+        const response = await api.get(`/dishes/${params.id}`);
+        setDish(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    
+    fetchDish();
+  }, [params.id]);
+
+  useEffect(() => {
+    if (dish) {
+      setFileName(dish.image);
+      setImage(dish.image);
+      setName(dish.name);
+      setCategory(dish.category);
+      setPrice(dish.price);
+      setDescription(dish.description);
+  
+      const allIngredients = dish.ingredients.map((ingredient) => ingredient.name);
+      setTags(allIngredients);
+    }
+  }, [dish]);  
+
   function handleImageChange(e) {
     const file = e.target.files[0];
     setImage(file);
+    setUpdatedImage(file);
     setFileName(file.name);
   }
 
@@ -57,7 +89,7 @@ export function New({ isAdmin }) {
     setTags((prevState) => prevState.filter((tag) => tag !== deleted));
   }
 
-  async function handleNewDish() {
+  async function handleEditDish() {
     if (!image) {
       return alert("Selecione a imagem do prato.");
     }
@@ -87,28 +119,46 @@ export function New({ isAdmin }) {
     if (!description) {
       return alert("Digite a descrição do prato.");
     }
-    
-		const formData = new FormData();
-    formData.append("image", image);
-    formData.append("name", name);
-    formData.append("category", category);
-    formData.append("price", price);
-    formData.append("description", description);
-
-    formData.append("ingredients", JSON.stringify(tags));
 
     try {
-      await api.post("/dishes", formData);
-      alert("Prato cadastrado com sucesso!");
-      navigate(-1);
+      const updatedDish = {
+        name: name,
+        category: category,
+        price: price,
+        description: description,
+        ingredients: tags,
+      };
+  
+      if (image) {
+        const formData = new FormData();
+        formData.append("image", image);
+  
+        await api.patch(`/dishes/${params.id}`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      }
+  
+      await api.patch(`/dishes/${params.id}`, updatedDish);
+  
+      alert("Prato atualizado com sucesso!");
+      navigate("/");
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
       } else {
-        alert("Não foi possível cadastrar o prato.");
+        alert("Não foi possível atualizar o prato.");
       }
     }
 	}
+
+  async function handleRemoveDish() {
+    const confirm = window.confirm("Deseja realmente remover o prato?");
+  
+    if (confirm) {
+      await api.delete(`/dishes/${params.id}`);
+      navigate(-1);
+    }
+  }
 
   return (
     <Container>
@@ -126,7 +176,7 @@ export function New({ isAdmin }) {
               voltar
             </ButtonText>
 
-            <h1>Adicionar prato</h1>
+            <h1>Editar prato</h1>
           </header>
 
           <div>
@@ -210,14 +260,22 @@ export function New({ isAdmin }) {
           <Section title="Descrição">
             <Textarea 
               placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+              defaultValue={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </Section>
 
-          <div className="save">
+          <div className="buttons">
+            <Button 
+              className="delete" 
+              title="Excluir prato" 
+              onClick={handleRemoveDish} 
+            />
+
             <Button
+              className="save"
               title="Salvar alterações"
-              onClick={handleNewDish}
+              onClick={handleEditDish}
             />
           </div>
         </Form>
