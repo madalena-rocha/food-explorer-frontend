@@ -143,6 +143,10 @@ export const Content = styled.div`
     margin-bottom: 2.4rem;
   }
   
+  swiper-container {
+    height: 29.2rem;
+  }
+
   swiper-slide {
     max-width: 21rem;
   }
@@ -152,6 +156,10 @@ export const Content = styled.div`
 
     section > h2 {
       font-size: 3.2rem;
+    }
+
+    swiper-container {
+      height: 46.2rem;
     }
 
     swiper-container::before,

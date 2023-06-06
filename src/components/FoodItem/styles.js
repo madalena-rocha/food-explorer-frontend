@@ -29,6 +29,7 @@ export const Container = styled.div`
     
     padding: 0.8rem 0.8rem 0.8rem 1.6rem;
     border: none;
+    outline: none;
     
     color: ${({ theme }) => theme.COLORS.WHITE};
     background: transparent;
