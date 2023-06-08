@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
+  min-height: 100vh;
 
   display: grid;
   grid-template-rows: 11.4rem auto 7.7rem;
@@ -90,7 +91,7 @@ export const Container = styled.div`
     }
 
     .include {
-      max-width: 16.2rem;
+      max-width: fit-content;
       padding: 1.2rem 2.4rem;
 
       font-size: 1.4rem;

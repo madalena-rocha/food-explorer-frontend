@@ -24,6 +24,8 @@ export function Dish({ isAdmin }) {
   const params = useParams();
   const navigate = useNavigate();
 
+  const [number, setNumber] = useState(1);
+
   function handleBack() {
     navigate(-1);
   }
@@ -99,9 +101,13 @@ export function Dish({ isAdmin }) {
                       onClick={handleEdit}
                     /> : 
                     <>
-                      <NumberPicker />
+                      <NumberPicker number={number} setNumber={setNumber} />
                       <Button 
-                        title={isDesktop ? `incluir ∙ R$ ${data.price}` : `pedir ∙ R$ ${data.price}`} 
+                        title={
+                          isDesktop ? 
+                          `incluir ∙ R$ ${(data.price * number).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : 
+                          `pedir ∙ R$ ${(data.price * number).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
+                        } 
                         className="include" 
                         isCustomer={!isDesktop}
                       />
