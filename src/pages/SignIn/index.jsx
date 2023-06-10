@@ -14,11 +14,14 @@ import brand from "../../assets/brand.svg";
 export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { signIn } = useAuth();
 
   function handleSignIn() {
-    signIn({ email, password });
+    setLoading(true);
+
+    signIn({ email, password }).finally(() => setLoading(false));
   }
 
   return (
@@ -46,7 +49,7 @@ export function SignIn() {
           />
         </Section>
 
-        <Button title="Entrar" onClick={handleSignIn} />
+        <Button title="Entrar" onClick={handleSignIn} loading={loading} />
 
         <Link to="/register">
           Criar uma conta

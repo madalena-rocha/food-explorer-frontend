@@ -23,6 +23,8 @@ export function Food({ data, isAdmin, isFavorite, updateFavorite, handleDetails,
   const [number, setNumber] = useState(1);
   const [cartId, setCartId] = useState(null);
 
+  const [loading, setLoading] = useState(false);
+
   const handleFavorite = async () => {
     try {
       if (isFavorite) {
@@ -40,6 +42,8 @@ export function Food({ data, isAdmin, isFavorite, updateFavorite, handleDetails,
   }
 
   async function handleInclude() {
+    setLoading(true);
+
     try {
       const cartItem = {
         dish_id: data.id,
@@ -67,6 +71,8 @@ export function Food({ data, isAdmin, isFavorite, updateFavorite, handleDetails,
         alert('Não foi possível adicionar ao carrinho.');
         console.log('Erro ao adicionar ao carrinho:', error);
       }
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -102,7 +108,7 @@ export function Food({ data, isAdmin, isFavorite, updateFavorite, handleDetails,
       {!isAdmin && 
         <Order>
           <NumberPicker number={number} setNumber={setNumber} />
-          <Button title="incluir" onClick={handleInclude} />
+          <Button title="incluir" onClick={handleInclude} loading={loading} />
         </Order>
       }
     </Container>
