@@ -170,6 +170,7 @@ export const Content = styled.div`
       bottom: 0;
       width: 22.4rem;
       z-index: 2;
+      pointer-events: none;
     }
 
     swiper-container::before {
