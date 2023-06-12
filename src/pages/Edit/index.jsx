@@ -165,7 +165,7 @@ export function Edit({ isAdmin }) {
 
       try {
         await api.delete(`/dishes/${params.id}`);
-        navigate(-1);
+        navigate("/");
       } catch (error) {
         if (error.response) {
           alert(error.response.data.message);
