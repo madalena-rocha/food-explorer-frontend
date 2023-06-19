@@ -12,12 +12,13 @@ export const Container = styled.div`
     "footer";
 
   > main {
+    width: 100%;
     grid-area: content;
     justify-self: center;
 
     > div {
       width: calc(100% - 7rem);
-      margin: 5.6rem 3.5rem 9.9rem;
+      margin: 5.6rem 3.5rem;
   
       h1 {
         font-family: "Poppins", sans-serif;
@@ -37,7 +38,6 @@ export const Container = styled.div`
     grid-template-rows: 9.6rem auto 7.7rem;
 
     > main {
-      width: 100%;
       overflow-y: auto;
 
       ::-webkit-scrollbar {
