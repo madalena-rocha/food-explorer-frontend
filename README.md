@@ -35,6 +35,7 @@ A aplicação conta com as seguintes páginas:
 - Detalhes do prato
 - Novo prato
 - Editar prato
+- Favoritos
 
 !["Página home"](./src/assets/home.png)
 
@@ -50,6 +51,7 @@ A aplicação apresenta as seguintes funcionalidades:
 - Mostrar detalhes do prato
 - Favoritar prato
 - Remover prato dos favoritos
+- Mostrar favoritos
 - Adicionar prato ao carrinho
 - Editar prato
 - Excluir prato
